@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cowsay Step
-        uses: peter-evans/cowsay@v1
+        uses: mscoutermarsh/cowsays-action@master
         with:
           message: "Ready for prod-ship it!"
           cow: "default"
