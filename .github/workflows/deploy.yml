@@ -11,18 +11,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Azure credentials
-      id: azure-credentials
-      run: |
-        echo "{\"clientId\": \"${{ secrets.AZURE_CLIENT_ID }}\", \"clientSecret\": \"${{ secrets.AZURE_CLIENT_SECRET }}\", \"tenantId\": \"${{ secrets.AZURE_TENANT }}\"}" > azure-credentials.json
-
     - name: login
       uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
 
     - name: Deploy ARM template
